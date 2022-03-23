@@ -4,3 +4,5 @@ export type Size = {
 }
 
 export type OutputFormat = "png" | "jpg"
+
+export type Gravity = "NorthWest"|"North"|"NorthEast"|"West"|"Center"|"East"|"SouthWest"|"South"|"SouthEast"

@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { imageSize, crop, resample, convert } from "../index.js"
+import { imageSize, crop, resample, convert, stackVertically, stackHorizontally } from "../index.js"
 import fs from "fs"
 
 const divineSize = {
@@ -107,6 +107,30 @@ describe("Conversion", () => {
             .then(image => convert(image, "jpg"))
             .then(jpg => convert(jpg, "png"))
             .then(() => done())
+            .catch(error => done(error))
+    })
+})
+describe("Stacking", () => {
+    it("Stacks images vertically", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => stackVertically([image, image], "Center", "png"))
+            .then(png => imageSize(png))
+            .then(size => {
+                assert.equal(size.width, divineSize.width)
+                assert.equal(size.height, divineSize.height * 2)
+                done()
+            })
+            .catch(error => done(error))
+    })
+    it("Stacks images horizontally", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => stackHorizontally([image, image], "Center", "png"))
+            .then(png => imageSize(png))
+            .then(size => {
+                assert.equal(size.width, divineSize.width * 2)
+                assert.equal(size.height, divineSize.height)
+                done()
+            })
             .catch(error => done(error))
     })
 })

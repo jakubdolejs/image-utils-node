@@ -88,3 +88,25 @@ fs.promises.readFile(file)
     .then(resampledImage => fs.promises.writeFile(resampledImageFile, resampledImage)
     .catch(error => console.error(error))
 ```
+
+### Stack images
+
+The following script stacks the image called *top.png* on top of image called *bottom.png*. If the images are different widths they will be centered. The script writes the resulting image in a file called *myverticalstack.png*.
+
+To stack images horizontally substitute `stackVertically` with `stackHorizontally`.
+
+```typescript
+import { stackVertically } from "@jakubdolejs/image_utils"
+import fs from "fs"
+
+const top = "top.png"
+const bottom = "bottom.png"
+const stackedImages = "myverticalstack.png"
+fs.promises.readFile(top)
+    .then(topImage => {
+        return fs.promises.readFile(bottom)
+            .then(bottomImage => stackVertically([topImage, bottomImage], "Center", "png")
+    })
+    .then(stackedImage => fs.promises.writeFile(stackedImages, stackedImage))
+    .catch(error => console.error(error))
+```
