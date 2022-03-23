@@ -17,7 +17,7 @@
   "dependencies": {
     "uuid": "^8.3.2"
   },
-  "repository": "https://github.com/jakubdolejs/image-utils-node",
+  "repository": "git://github.com/jakubdolejs/image-utils-node.git",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }
