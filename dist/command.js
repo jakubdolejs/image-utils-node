@@ -1,9 +1,9 @@
 import { spawn } from "child_process";
-export function runCommand(command, ...args) {
+export function runCommand(command, shell, ...args) {
     return new Promise((resolve, reject) => {
         let error = "";
         const buffers = [];
-        const proc = spawn(command, args);
+        const proc = spawn(command, args, { "stdio": ["ignore", "pipe", "pipe"], "shell": shell });
         proc.stdout.on("data", data => {
             buffers.push(data);
         });
@@ -15,6 +15,7 @@ export function runCommand(command, ...args) {
                 return resolve(Buffer.concat(buffers));
             }
             else {
+                console.log(`Failed command: ${command} ${args.join(" ")}`);
                 return reject(error);
             }
         });

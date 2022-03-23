@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;types&quot; | @jakubdolejs/image_utils</title>
+	<title>&quot;drawing&quot; | @jakubdolejs/image_utils</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_types_.html">&quot;types&quot;</a>
+					<a href="_drawing_.html">&quot;drawing&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;types&quot;</h1>
+			<h1>External module &quot;drawing&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,113 +71,95 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Type aliases</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#gravity" class="tsd-kind-icon">Gravity</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#outputformat" class="tsd-kind-icon">Output<wbr>Format</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#point" class="tsd-kind-icon">Point</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#rectangle" class="tsd-kind-icon">Rectangle</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#size" class="tsd-kind-icon">Size</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_types_.html#strokespec" class="tsd-kind-icon">Stroke<wbr>Spec</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_drawing_.html#colourtostring" class="tsd-kind-icon">colour<wbr>ToString</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_drawing_.html#drawrectangle" class="tsd-kind-icon">draw<wbr>Rectangle</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="gravity" class="tsd-anchor"></a>
-					<h3>Gravity</h3>
-					<div class="tsd-signature tsd-kind-icon">Gravity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"NorthWest"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"North"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"NorthEast"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"West"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"Center"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"East"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"SouthWest"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"South"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"SouthEast"</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L10">types.ts:10</a></li>
-						</ul>
-					</aside>
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="colourtostring" class="tsd-anchor"></a>
+					<h3>colour<wbr>ToString</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">colour<wbr>ToString<span class="tsd-signature-symbol">(</span>colour<span class="tsd-signature-symbol">: </span><a href="../classes/_colour_.colour.html" class="tsd-signature-type">Colour</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in drawing.ts:45</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>colour: <a href="../classes/_colour_.colour.html" class="tsd-signature-type">Colour</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="outputformat" class="tsd-anchor"></a>
-					<h3>Output<wbr>Format</h3>
-					<div class="tsd-signature tsd-kind-icon">Output<wbr>Format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"png"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"jpg"</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L8">types.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="point" class="tsd-anchor"></a>
-					<h3>Point</h3>
-					<div class="tsd-signature tsd-kind-icon">Point<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L17">types.ts:17</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="rectangle" class="tsd-anchor"></a>
-					<h3>Rectangle</h3>
-					<div class="tsd-signature tsd-kind-icon">Rectangle<span class="tsd-signature-symbol">:</span> <a href="_types_.html#point" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> &amp; </span><a href="_types_.html#size" class="tsd-signature-type">Size</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L21">types.ts:21</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="size" class="tsd-anchor"></a>
-					<h3>Size</h3>
-					<div class="tsd-signature tsd-kind-icon">Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L3">types.ts:3</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="strokespec" class="tsd-anchor"></a>
-					<h3>Stroke<wbr>Spec</h3>
-					<div class="tsd-signature tsd-kind-icon">Stroke<wbr>Spec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/types.ts#L12">types.ts:12</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter">
-								<h5>colour<span class="tsd-signature-symbol">: </span><a href="../classes/_colour_.colour.html" class="tsd-signature-type">Colour</a></h5>
-							</li>
-							<li class="tsd-parameter">
-								<h5>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
-					</div>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="drawrectangle" class="tsd-anchor"></a>
+					<h3>draw<wbr>Rectangle</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">draw<wbr>Rectangle<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, rectangle<span class="tsd-signature-symbol">: </span><a href="_types_.html#rectangle" class="tsd-signature-type">Rectangle</a>, fill<span class="tsd-signature-symbol">: </span><a href="../classes/_colour_.colour.html" class="tsd-signature-type">Colour</a>, stroke<span class="tsd-signature-symbol">: </span><a href="_types_.html#strokespec" class="tsd-signature-type">StrokeSpec</a>, outputFormat<span class="tsd-signature-symbol">?: </span><a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in drawing.ts:18</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Draw a rectangle on image</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <span class="tsd-signature-type">Buffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Byte array with an image in JPG or PNG format</p>
+									</div>
+								</li>
+								<li>
+									<h5>rectangle: <a href="_types_.html#rectangle" class="tsd-signature-type">Rectangle</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Rectangle to draw (coordinates in pixels)</p>
+									</div>
+								</li>
+								<li>
+									<h5>fill: <a href="../classes/_colour_.colour.html" class="tsd-signature-type">Colour</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Fill colour</p>
+									</div>
+								</li>
+								<li>
+									<h5>stroke: <a href="_types_.html#strokespec" class="tsd-signature-type">StrokeSpec</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Stroke colour and width</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> outputFormat: <a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol"> =&nbsp;&quot;png&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>PNG or JPG</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Promise that resolves to a byte array containing the input image converted to the output format with rectangle drawn on the image</p>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -196,7 +178,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_crop_.html">"crop"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_drawing_.html">"drawing"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -208,30 +190,18 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_stack_.html">"stack"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_types_.html">"types"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#gravity" class="tsd-kind-icon">Gravity</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_drawing_.html#colourtostring" class="tsd-kind-icon">colour<wbr>ToString</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#outputformat" class="tsd-kind-icon">Output<wbr>Format</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#point" class="tsd-kind-icon">Point</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#rectangle" class="tsd-kind-icon">Rectangle</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#size" class="tsd-kind-icon">Size</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="_types_.html#strokespec" class="tsd-kind-icon">Stroke<wbr>Spec</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_drawing_.html#drawrectangle" class="tsd-kind-icon">draw<wbr>Rectangle</a>
 					</li>
 				</ul>
 			</nav>

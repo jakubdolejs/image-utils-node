@@ -19,7 +19,7 @@ export async function convert(image: Buffer, outputFormat: OutputFormat): Promis
     const outputFileName = path.join(tmpdir(), uuid())
     try {
         await fs.promises.writeFile(inputFileName, image)        
-        await runCommand("convert", inputFileName, `${outputFormat}:${outputFileName}`)
+        await runCommand("convert", false, inputFileName, `${outputFormat}:${outputFileName}`)
         return fs.promises.readFile(outputFileName)
     } finally {
         try {

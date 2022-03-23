@@ -43,7 +43,7 @@ async function stackImages(images: Buffer[], gravity: Gravity, outputFormat: Out
     try {
         args.splice(0, 0, "-gravity", gravity)
         args.push(appendCommand, `${outputFormat}:${outputFileName}`)
-        await runCommand("convert", ...args)
+        await runCommand("convert", false, ...args)
         return fs.promises.readFile(outputFileName)
     } finally {
         for (const file of inputFiles) {

@@ -23,7 +23,7 @@ export async function crop(image: Buffer, x: number, y: number, width: number, h
     const outputFileName = path.join(tmpdir(), uuid());
     try {
         await fs.promises.writeFile(inputFileName, image);
-        await runCommand("convert", inputFileName, "-crop", `${Math.floor(width)}x${Math.floor(height)}+${Math.ceil(x)}+${Math.ceil(y)}`, `${outputFormat}:${outputFileName}`);
+        await runCommand("convert", false, inputFileName, "-crop", `${Math.floor(width)}x${Math.floor(height)}+${Math.ceil(x)}+${Math.ceil(y)}`, `${outputFormat}:${outputFileName}`);
         return fs.promises.readFile(outputFileName);
     } finally {
         try {

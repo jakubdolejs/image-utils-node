@@ -32,7 +32,7 @@ export async function resample(image: Buffer, width: number|undefined, height: n
     const outputFileName = path.join(tmpdir(), uuid())
     try {
         await fs.promises.writeFile(inputFileName, image)
-        await runCommand("convert", inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`)
+        await runCommand("convert", false, inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`)
         return fs.promises.readFile(outputFileName)
     } finally {
         try {

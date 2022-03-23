@@ -14,7 +14,7 @@ export async function imageSize(image: Buffer): Promise<Size> {
     const inputFileName = path.join(tmpdir(), uuid())
     try {
         await fs.promises.writeFile(inputFileName, image)        
-        const result = await runCommand("identify", "-ping", "-format", `{"width": %w,"height": %h}`, inputFileName)
+        const result = await runCommand("identify", false, "-ping", "-format", `{"width": %w,"height": %h}`, inputFileName)
         return JSON.parse(result.toString("utf-8"))
     } finally {
         try {

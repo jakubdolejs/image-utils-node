@@ -48,7 +48,7 @@ function stackImages(images, gravity, outputFormat, direction) {
         try {
             args.splice(0, 0, "-gravity", gravity);
             args.push(appendCommand, `${outputFormat}:${outputFileName}`);
-            yield runCommand("convert", ...args);
+            yield runCommand("convert", false, ...args);
             return fs.promises.readFile(outputFileName);
         }
         finally {

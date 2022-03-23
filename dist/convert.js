@@ -27,7 +27,7 @@ export function convert(image, outputFormat) {
         const outputFileName = path.join(tmpdir(), uuid());
         try {
             yield fs.promises.writeFile(inputFileName, image);
-            yield runCommand("convert", inputFileName, `${outputFormat}:${outputFileName}`);
+            yield runCommand("convert", false, inputFileName, `${outputFormat}:${outputFileName}`);
             return fs.promises.readFile(outputFileName);
         }
         finally {

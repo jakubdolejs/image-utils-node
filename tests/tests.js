@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { imageSize, crop, resample, convert, stackVertically, stackHorizontally } from "../index.js"
+import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, Colour } from "../index.js"
 import fs from "fs"
 
 const divineSize = {
@@ -131,6 +131,14 @@ describe("Stacking", () => {
                 assert.equal(size.height, divineSize.height)
                 done()
             })
+            .catch(error => done(error))
+    })
+})
+describe("Drawing", () => {
+    it("Draws a rectangle on image", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => drawRectangle(image, {"x": 20, "y": 20, "width": divineSize.width-40, "height": divineSize.height-40}, Colour.TRANSPARENT, {"width": 4, "colour": Colour.RED}))
+            .then(() => done())
             .catch(error => done(error))
     })
 })

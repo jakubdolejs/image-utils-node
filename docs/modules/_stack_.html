@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;crop&quot; | @jakubdolejs/image_utils</title>
+	<title>&quot;stack&quot; | @jakubdolejs/image_utils</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_crop_.html">&quot;crop&quot;</a>
+					<a href="_stack_.html">&quot;stack&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;crop&quot;</h1>
+			<h1>External module &quot;stack&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,10 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_crop_.html#crop" class="tsd-kind-icon">crop</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_stack_.html#stackhorizontally" class="tsd-kind-icon">stack<wbr>Horizontally</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_stack_.html#stackimages" class="tsd-kind-icon">stack<wbr>Images</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_stack_.html#stackvertically" class="tsd-kind-icon">stack<wbr>Vertically</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_stack_.html#tempfilesfrombuffers" class="tsd-kind-icon">temp<wbr>Files<wbr>From<wbr>Buffers</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,64 +85,145 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="crop" class="tsd-anchor"></a>
-					<h3>crop</h3>
+					<a name="stackhorizontally" class="tsd-anchor"></a>
+					<h3>stack<wbr>Horizontally</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">crop<span class="tsd-signature-symbol">(</span>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, outputFormat<span class="tsd-signature-symbol">?: </span><a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">stack<wbr>Horizontally<span class="tsd-signature-symbol">(</span>images<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span>, gravity<span class="tsd-signature-symbol">?: </span><a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a>, outputFormat<span class="tsd-signature-symbol">?: </span><a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/crop.ts#L18">crop.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/stack.ts#L26">stack.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Crop image</p>
+									<p>Stack images horizontally</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>image: <span class="tsd-signature-type">Buffer</span></h5>
+									<h5>images: <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Byte array with an image in JPG or PNG format</p>
+										<p>Images to stack</p>
 									</div>
 								</li>
 								<li>
-									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> gravity: <a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a><span class="tsd-signature-symbol"> =&nbsp;&quot;Center&quot;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Number of pixels to crop from the left edge of the image</p>
-									</div>
-								</li>
-								<li>
-									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Number of pixels to crop from the top edge of the image</p>
-									</div>
-								</li>
-								<li>
-									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Width of the cropped image in pixels</p>
-									</div>
-								</li>
-								<li>
-									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Height of the cropped image in pixels</p>
+										<p>Gravity</p>
 									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> outputFormat: <a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol"> =&nbsp;&quot;png&quot;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>PNG or JPG (defaults to PNG)</p>
+										<p>Output format</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Promise that resolves to a byte array containing the cropped image in the specified format</p>
+							<p>Promise that resolves to a byte array containing the image of the horizontally stacked input images in the specified format</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="stackimages" class="tsd-anchor"></a>
+					<h3>stack<wbr>Images</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">stack<wbr>Images<span class="tsd-signature-symbol">(</span>images<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span>, gravity<span class="tsd-signature-symbol">: </span><a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a>, outputFormat<span class="tsd-signature-symbol">: </span><a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a>, direction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"horizontal"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"vertical"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/stack.ts#L38">stack.ts:38</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>images: <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>gravity: <a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a></h5>
+								</li>
+								<li>
+									<h5>outputFormat: <a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a></h5>
+								</li>
+								<li>
+									<h5>direction: <span class="tsd-signature-type">"horizontal"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"vertical"</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="stackvertically" class="tsd-anchor"></a>
+					<h3>stack<wbr>Vertically</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">stack<wbr>Vertically<span class="tsd-signature-symbol">(</span>images<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span>, gravity<span class="tsd-signature-symbol">?: </span><a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a>, outputFormat<span class="tsd-signature-symbol">?: </span><a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/stack.ts#L15">stack.ts:15</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Stack images vertically</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>images: <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Images to stack</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> gravity: <a href="_types_.html#gravity" class="tsd-signature-type">Gravity</a><span class="tsd-signature-symbol"> =&nbsp;&quot;Center&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Gravity</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> outputFormat: <a href="_types_.html#outputformat" class="tsd-signature-type">OutputFormat</a><span class="tsd-signature-symbol"> =&nbsp;&quot;png&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Output format</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Promise that resolves to a byte array containing the image of the vertically stacked input images in the specified format</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="tempfilesfrombuffers" class="tsd-anchor"></a>
+					<h3>temp<wbr>Files<wbr>From<wbr>Buffers</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">temp<wbr>Files<wbr>From<wbr>Buffers<span class="tsd-signature-symbol">(</span>buffers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jakubdolejs/image-utils-node/blob/8aef469/src/stack.ts#L30">stack.ts:30</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>buffers: <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -157,7 +241,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_convert_.html">"convert"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_crop_.html">"crop"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -169,7 +253,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_resample_.html">"resample"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_stack_.html">"stack"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -180,7 +264,16 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_crop_.html#crop" class="tsd-kind-icon">crop</a>
+						<a href="_stack_.html#stackhorizontally" class="tsd-kind-icon">stack<wbr>Horizontally</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_stack_.html#stackimages" class="tsd-kind-icon">stack<wbr>Images</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_stack_.html#stackvertically" class="tsd-kind-icon">stack<wbr>Vertically</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_stack_.html#tempfilesfrombuffers" class="tsd-kind-icon">temp<wbr>Files<wbr>From<wbr>Buffers</a>
 					</li>
 				</ul>
 			</nav>

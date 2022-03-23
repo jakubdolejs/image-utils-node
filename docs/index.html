@@ -128,6 +128,22 @@ fs.promises.readFile(file)
     .then(<span class="hljs-function"><span class="hljs-params">image</span> =&gt;</span> resample(image, width, height))
     .then(<span class="hljs-function"><span class="hljs-params">resampledImage</span> =&gt;</span> fs.promises.writeFile(resampledImageFile, resampledImage)
     .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(error))</code></pre>
+				<h3 id="stack-images">Stack images</h3>
+				<p>The following script stacks the image called <em>top.png</em> on top of image called <em>bottom.png</em>. If the images are different widths they will be centered. The script writes the resulting image in a file called <em>myverticalstack.png</em>.</p>
+				<p>To stack images horizontally substitute <code>stackVertically</code> with <code>stackHorizontally</code>.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { stackVertically } <span class="hljs-keyword">from</span> <span class="hljs-string">"@jakubdolejs/image_utils"</span>
+<span class="hljs-keyword">import</span> fs <span class="hljs-keyword">from</span> <span class="hljs-string">"fs"</span>
+
+<span class="hljs-keyword">const</span> top = <span class="hljs-string">"top.png"</span>
+<span class="hljs-keyword">const</span> bottom = <span class="hljs-string">"bottom.png"</span>
+<span class="hljs-keyword">const</span> stackedImages = <span class="hljs-string">"myverticalstack.png"</span>
+fs.promises.readFile(top)
+    .then(<span class="hljs-function"><span class="hljs-params">topImage</span> =&gt;</span> {
+        <span class="hljs-keyword">return</span> fs.promises.readFile(bottom)
+            .then(<span class="hljs-function"><span class="hljs-params">bottomImage</span> =&gt;</span> stackVertically([topImage, bottomImage], <span class="hljs-string">"Center"</span>, <span class="hljs-string">"png"</span>)
+    })
+    .then(<span class="hljs-function"><span class="hljs-params">stackedImage</span> =&gt;</span> fs.promises.writeFile(stackedImages, stackedImage))
+    .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(error))</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -136,8 +152,8 @@ fs.promises.readFile(file)
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_colour_.html">"colour"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_convert_.html">"convert"</a>
@@ -146,19 +162,19 @@ fs.promises.readFile(file)
 						<a href="modules/_crop_.html">"crop"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_drawing_.html">"drawing"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_imagesize_.html">"image<wbr>Size"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_resample_.html">"resample"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_stack_.html">"stack"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_types_.html">"types"</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_command_.html">"command"</a>
 					</li>
 				</ul>
 			</nav>

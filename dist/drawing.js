@@ -13,25 +13,25 @@ import { tmpdir } from "os";
 import path from "path";
 import { v4 as uuid } from "uuid";
 /**
- * Crop image
- * @param image Byte array with an image in JPG or PNG format
- * @param x Number of pixels to crop from the left edge of the image
- * @param y Number of pixels to crop from the top edge of the image
- * @param width Width of the cropped image in pixels
- * @param height Height of the cropped image in pixels
- * @param outputFormat PNG or JPG (defaults to PNG)
- * @returns Promise that resolves to a byte array containing the cropped image in the specified format
+ * Draw a rectangle on image
+ * @param input Byte array with an image in JPG or PNG format
+ * @param rectangle Rectangle to draw (coordinates in pixels)
+ * @param fill Fill colour
+ * @param stroke Stroke colour and width
+ * @param outputFormat PNG or JPG
+ * @returns Promise that resolves to a byte array containing the input image converted to the output format with rectangle drawn on the image
  */
-export function crop(image, x, y, width, height, outputFormat = "png") {
+export function drawRectangle(input, rectangle, fill, stroke, outputFormat = "png") {
     return __awaiter(this, void 0, void 0, function* () {
         if (outputFormat.toLowerCase() != "png" && outputFormat.toLowerCase() != "jpg") {
             return Promise.reject(new Error("Invalid output format. Valid formats are png and jpg."));
         }
         const inputFileName = path.join(tmpdir(), uuid());
         const outputFileName = path.join(tmpdir(), uuid());
+        const rectSpec = `'rectangle ${Math.ceil(rectangle.x)},${Math.ceil(rectangle.y)} ${Math.floor(rectangle.x + rectangle.width)},${Math.floor(rectangle.y + rectangle.height)}'`;
         try {
-            yield fs.promises.writeFile(inputFileName, image);
-            yield runCommand("convert", false, inputFileName, "-crop", `${Math.floor(width)}x${Math.floor(height)}+${Math.ceil(x)}+${Math.ceil(y)}`, `${outputFormat}:${outputFileName}`);
+            yield fs.promises.writeFile(inputFileName, input);
+            yield runCommand("convert", true, inputFileName, "-stroke", stroke.colour.toString(), "-strokewidth", stroke.width.toString(), "-fill", fill.toString(), "-draw", rectSpec, `${outputFormat}:${outputFileName}`);
             return fs.promises.readFile(outputFileName);
         }
         finally {
@@ -46,4 +46,4 @@ export function crop(image, x, y, width, height, outputFormat = "png") {
         }
     });
 }
-//# sourceMappingURL=crop.js.map
+//# sourceMappingURL=drawing.js.map

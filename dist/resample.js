@@ -42,7 +42,7 @@ export function resample(image, width, height, outputFormat = "png") {
         const outputFileName = path.join(tmpdir(), uuid());
         try {
             yield fs.promises.writeFile(inputFileName, image);
-            yield runCommand("convert", inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`);
+            yield runCommand("convert", false, inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`);
             return fs.promises.readFile(outputFileName);
         }
         finally {

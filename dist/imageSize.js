@@ -22,7 +22,7 @@ export function imageSize(image) {
         const inputFileName = path.join(tmpdir(), uuid());
         try {
             yield fs.promises.writeFile(inputFileName, image);
-            const result = yield runCommand("identify", "-ping", "-format", `{"width": %w,"height": %h}`, inputFileName);
+            const result = yield runCommand("identify", false, "-ping", "-format", `{"width": %w,"height": %h}`, inputFileName);
             return JSON.parse(result.toString("utf-8"));
         }
         finally {
