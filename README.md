@@ -1,6 +1,6 @@
 # Image utilities for Node
 
-This library is a collection of utilities for resampling and cropping images inside the Node JS runtime.
+This library is a collection of image manipulation utilities running inside the Node JS runtime. The manipulation is done using [ImageMagick](https://imagemagick.org).
 
 ## Requirements
 
@@ -9,16 +9,9 @@ This library is a collection of utilities for resampling and cropping images ins
 
 ## Installation
 
-1. Add the following registry in your .npmrc file
-
-    ```
-    @jakubdolejs:registry=https://npm.pkg.github.com
-    ```
-2. Install the package
-
-    ```
-    npm install @jakubdolejs/image_utils
-    ```
+```
+npm install @jakubdolejs/image_utils
+```
 
 ## Usage
 
@@ -108,5 +101,32 @@ fs.promises.readFile(top)
             .then(bottomImage => stackVertically([topImage, bottomImage], "Center", "png")
     })
     .then(stackedImage => fs.promises.writeFile(stackedImages, stackedImage))
+    .catch(error => console.error(error))
+```
+
+### Draw a rectangle on image
+
+The following script draws a rectangle with 4-pixel wide green stroke and semi-transparent fill 10 pixels from each edge of a 640 &times; 480 pixel image called *myimage.png*. The script writes the resulting image in a file called *myimagewithrectangle.png*.
+
+```typescript
+import { drawRectangle, Colour } from "@jakubdolejs/image_utils"
+import fs from "fs"
+
+const file = "myimage.png"
+const fileWithRectangle = "myimagewithrectangle.png"
+const rectangle = {
+    "x": 10,
+    "y": 10,
+    "width": 620,
+    "height": 460
+}
+const fillColour = Colour.TRANSPARENT
+const stroke = {
+    "width": 4,
+    "colour": Colour.GREEN
+}
+fs.promises.readFile(file)
+    .then(image => drawRectangle(image, rectangle, fillColour, stroke, "png"))
+    .then(imageWithRectangle => fs.promises.writeFile(fileWithRectangle, imageWithRectangle))
     .catch(error => console.error(error))
 ```
