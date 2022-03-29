@@ -13,4 +13,6 @@ Colour.RED = new Colour(0xFF, 0, 0);
 Colour.GREEN = new Colour(0, 0xFF, 0);
 Colour.BLUE = new Colour(0, 0, 0xFF);
 Colour.TRANSPARENT = new Colour(0, 0, 0, 0);
+Colour.WHITE = new Colour(0xFF, 0xFF, 0xFF);
+Colour.BLACK = new Colour(0, 0, 0);
 //# sourceMappingURL=colour.js.map

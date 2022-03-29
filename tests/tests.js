@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, Colour } from "../index.js"
+import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, addBorderPercent, Colour } from "../index.js"
 import fs from "fs"
 
 const divineSize = {
@@ -139,6 +139,21 @@ describe("Drawing", () => {
         fs.promises.readFile("./tests/divine.png")
             .then(image => drawRectangle(image, {"x": 20, "y": 20, "width": divineSize.width-40, "height": divineSize.height-40}, Colour.TRANSPARENT, {"width": 4, "colour": Colour.RED}))
             .then(() => done())
+            .catch(error => done(error))
+    })
+})
+describe("Adding borders", () => {
+    it("Adds a 5% border around image", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => addBorderPercent(image, 5, 5, Colour.BLACK))
+            .then(image => imageSize(image))
+            .then(size => {
+                assert.isAtLeast(size.width, Math.floor(divineSize.width * 1.1))
+                assert.isAtLeast(size.height, Math.floor(divineSize.height * 1.1))
+                assert.isAtMost(size.width, Math.ceil(divineSize.width * 1.1))
+                assert.isAtMost(size.height, Math.ceil(divineSize.height * 1.1))
+                done()
+            })
             .catch(error => done(error))
     })
 })

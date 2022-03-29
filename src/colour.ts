@@ -9,6 +9,8 @@ export class Colour {
     static readonly GREEN: Colour = new Colour(0, 0xFF, 0)
     static readonly BLUE: Colour = new Colour(0, 0, 0xFF)
     static readonly TRANSPARENT: Colour = new Colour(0, 0, 0, 0)
+    static readonly WHITE: Colour = new Colour(0xFF, 0xFF, 0xFF)
+    static readonly BLACK: Colour = new Colour(0, 0, 0)
 
     constructor(red: number, green: number, blue: number, alpha: number=1) {
         this.red = red
