@@ -1,6 +1,6 @@
 {
   "name": "@jakubdolejs/image_utils",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Utilities for basic image manipulation like cropping and resampling",
   "main": "index.js",
   "type": "module",
