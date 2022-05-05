@@ -37,4 +37,31 @@ export function addBorderPercent(image, x, y, colour = Colour.WHITE, outputForma
         }
     });
 }
+export function extendSidesByMirroring(image, x, y, outputFormat = "png") {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (outputFormat.toLowerCase() != "png" && outputFormat.toLowerCase() != "jpg") {
+            return Promise.reject(new Error("Invalid output format. Valid formats are png and jpg."));
+        }
+        const file1 = path.join(tmpdir(), uuid());
+        const file2 = path.join(tmpdir(), uuid());
+        try {
+            yield fs.promises.writeFile(file1, image);
+            yield runCommand("convert", false, file1, "-set", "option:distort:viewport", "%[fx:w*2]x%[fx:h*2]", "-virtual-pixel", "mirror", "-distort", "srt", "0,0 1,1 0 %[fx:w/2],%[fx:h/2]", `${outputFormat}:${file2}`);
+            const cropX = 50 + x;
+            const cropY = 50 + y;
+            yield runCommand("convert", false, file2, "-gravity", "Center", "-crop", `%${cropX}x${cropY}+0+0`, `${outputFormat}:${file1}`);
+            return fs.promises.readFile(file1);
+        }
+        finally {
+            try {
+                yield fs.promises.unlink(file1);
+            }
+            catch (e) { }
+            try {
+                yield fs.promises.unlink(file2);
+            }
+            catch (e) { }
+        }
+    });
+}
 //# sourceMappingURL=border.js.map

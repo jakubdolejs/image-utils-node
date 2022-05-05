@@ -1,10 +1,18 @@
 import { assert } from "chai"
-import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, addBorderPercent, Colour } from "../index.js"
+import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, addBorderPercent, extendSidesByMirroring, Colour } from "../index.js"
 import fs from "fs"
 
 const divineSize = {
     "width": 257,
     "height": 388
+}
+
+function checkSizeMatchesDivine(size, scale, done) {
+    assert.isAtLeast(size.width, Math.floor(divineSize.width * scale))
+    assert.isAtLeast(size.height, Math.floor(divineSize.height * scale))
+    assert.isAtMost(size.width, Math.ceil(divineSize.width * scale))
+    assert.isAtMost(size.height, Math.ceil(divineSize.height * scale))
+    done()
 }
 
 describe("Image size", () => {
@@ -147,13 +155,14 @@ describe("Adding borders", () => {
         fs.promises.readFile("./tests/divine.png")
             .then(image => addBorderPercent(image, 5, 5, Colour.BLACK))
             .then(image => imageSize(image))
-            .then(size => {
-                assert.isAtLeast(size.width, Math.floor(divineSize.width * 1.1))
-                assert.isAtLeast(size.height, Math.floor(divineSize.height * 1.1))
-                assert.isAtMost(size.width, Math.ceil(divineSize.width * 1.1))
-                assert.isAtMost(size.height, Math.ceil(divineSize.height * 1.1))
-                done()
-            })
+            .then(size => checkSizeMatchesDivine(size, 1.1, done))
+            .catch(error => done(error))
+    })
+    it("Extends image by 5% mirroring the centre", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => extendSidesByMirroring(image, 5, 5))
+            .then(image => imageSize(image))
+            .then(size => checkSizeMatchesDivine(size, 1.1, done))
             .catch(error => done(error))
     })
 })
