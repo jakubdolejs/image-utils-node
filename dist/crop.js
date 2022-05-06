@@ -8,10 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { runCommand } from "./command.js";
-import fs from "fs";
-import { tmpdir } from "os";
-import path from "path";
-import { v4 as uuid } from "uuid";
 /**
  * Crop image
  * @param image Byte array with an image in JPG or PNG format
@@ -27,23 +23,7 @@ export function crop(image, x, y, width, height, outputFormat = "png") {
         if (outputFormat.toLowerCase() != "png" && outputFormat.toLowerCase() != "jpg") {
             return Promise.reject(new Error("Invalid output format. Valid formats are png and jpg."));
         }
-        const inputFileName = path.join(tmpdir(), uuid());
-        const outputFileName = path.join(tmpdir(), uuid());
-        try {
-            yield fs.promises.writeFile(inputFileName, image);
-            yield runCommand("convert", false, inputFileName, "-crop", `${Math.floor(width)}x${Math.floor(height)}+${Math.ceil(x)}+${Math.ceil(y)}`, `${outputFormat}:${outputFileName}`);
-            return fs.promises.readFile(outputFileName);
-        }
-        finally {
-            try {
-                yield fs.promises.unlink(inputFileName);
-            }
-            catch (e) { }
-            try {
-                yield fs.promises.unlink(outputFileName);
-            }
-            catch (e) { }
-        }
+        return runCommand({ "command": "convert", "args": ["-", "-crop", `${Math.floor(width)}x${Math.floor(height)}+${Math.ceil(x)}+${Math.ceil(y)}`, `${outputFormat}:-`] }, image);
     });
 }
 //# sourceMappingURL=crop.js.map

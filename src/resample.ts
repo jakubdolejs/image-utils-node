@@ -1,8 +1,4 @@
 import { runCommand } from "./command.js";
-import fs from "fs";
-import { tmpdir } from "os";
-import path from "path";
-import { v4 as uuid } from "uuid";
 import { OutputFormat } from "./types.js"
 
 /**
@@ -28,18 +24,5 @@ export async function resample(image: Buffer, width: number|undefined, height: n
     } else if (height) {
         geometry = `x${Math.floor(height)}`
     }
-    const inputFileName = path.join(tmpdir(), uuid())
-    const outputFileName = path.join(tmpdir(), uuid())
-    try {
-        await fs.promises.writeFile(inputFileName, image)
-        await runCommand("convert", false, inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`)
-        return fs.promises.readFile(outputFileName)
-    } finally {
-        try {
-            await fs.promises.unlink(inputFileName)
-        } catch (e) {}
-        try {
-            await fs.promises.unlink(outputFileName)
-        } catch (e) {}
-    }
+    return runCommand({"command": "convert", "args": ["-", "-resize", geometry, `${outputFormat}:-`]}, image)
 }

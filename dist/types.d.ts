@@ -14,3 +14,8 @@ export declare type Point = {
     y: number;
 };
 export declare type Rectangle = Point & Size;
+export declare type Command = {
+    "command": string;
+    "args"?: string[];
+    "shell"?: boolean;
+};

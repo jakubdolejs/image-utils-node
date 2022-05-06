@@ -19,3 +19,9 @@ export type Point = {
     y: number
 }
 export type Rectangle = Point & Size
+
+export type Command = {
+    "command": string
+    "args"?: string[]
+    "shell"?: boolean
+}

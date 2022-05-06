@@ -8,10 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { runCommand } from "./command.js";
-import fs from "fs";
-import { tmpdir } from "os";
-import path from "path";
-import { v4 as uuid } from "uuid";
 /**
  * Resample image keeping its aspect ratio
  * @param image Byte array with an image in JPG or PNG format
@@ -38,23 +34,7 @@ export function resample(image, width, height, outputFormat = "png") {
         else if (height) {
             geometry = `x${Math.floor(height)}`;
         }
-        const inputFileName = path.join(tmpdir(), uuid());
-        const outputFileName = path.join(tmpdir(), uuid());
-        try {
-            yield fs.promises.writeFile(inputFileName, image);
-            yield runCommand("convert", false, inputFileName, "-resize", geometry, `${outputFormat}:${outputFileName}`);
-            return fs.promises.readFile(outputFileName);
-        }
-        finally {
-            try {
-                yield fs.promises.unlink(inputFileName);
-            }
-            catch (e) { }
-            try {
-                yield fs.promises.unlink(outputFileName);
-            }
-            catch (e) { }
-        }
+        return runCommand({ "command": "convert", "args": ["-", "-resize", geometry, `${outputFormat}:-`] }, image);
     });
 }
 //# sourceMappingURL=resample.js.map

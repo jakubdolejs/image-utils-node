@@ -38,21 +38,14 @@ function tempFilesFromBuffers(buffers: Buffer[]): Promise<string[]> {
 async function stackImages(images: Buffer[], gravity: Gravity, outputFormat: OutputFormat, direction: "horizontal"|"vertical"): Promise<Buffer> {
     const inputFiles = await tempFilesFromBuffers(images)
     const args: string[] = inputFiles.slice()
-    const outputFileName = path.join(tmpdir(), uuid())
     const appendCommand = direction === "vertical" ? "-append" : "+append"
-    try {
-        args.splice(0, 0, "-gravity", gravity)
-        args.push(appendCommand, `${outputFormat}:${outputFileName}`)
-        await runCommand("convert", false, ...args)
-        return fs.promises.readFile(outputFileName)
-    } finally {
+    args.splice(0, 0, "-gravity", gravity)
+    args.push(appendCommand, `${outputFormat}:-`)
+    return runCommand({"command": "convert", "args": args}).finally(async () => {
         for (const file of inputFiles) {
             try {
                 await fs.promises.unlink(file)
             } catch (err) {}
         }
-        try {
-            await fs.promises.unlink(outputFileName)
-        } catch (err) {}
-    }
+    })
 }

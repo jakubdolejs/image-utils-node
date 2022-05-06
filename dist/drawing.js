@@ -8,10 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { runCommand } from "./command.js";
-import fs from "fs";
-import { tmpdir } from "os";
-import path from "path";
-import { v4 as uuid } from "uuid";
 /**
  * Draw a rectangle on image
  * @param input Byte array with an image in JPG or PNG format
@@ -26,24 +22,8 @@ export function drawRectangle(input, rectangle, fill, stroke, outputFormat = "pn
         if (outputFormat.toLowerCase() != "png" && outputFormat.toLowerCase() != "jpg") {
             return Promise.reject(new Error("Invalid output format. Valid formats are png and jpg."));
         }
-        const inputFileName = path.join(tmpdir(), uuid());
-        const outputFileName = path.join(tmpdir(), uuid());
         const rectSpec = `'rectangle ${Math.ceil(rectangle.x)},${Math.ceil(rectangle.y)} ${Math.floor(rectangle.x + rectangle.width)},${Math.floor(rectangle.y + rectangle.height)}'`;
-        try {
-            yield fs.promises.writeFile(inputFileName, input);
-            yield runCommand("convert", true, inputFileName, "-stroke", stroke.colour.toString(), "-strokewidth", stroke.width.toString(), "-fill", fill.toString(), "-draw", rectSpec, `${outputFormat}:${outputFileName}`);
-            return fs.promises.readFile(outputFileName);
-        }
-        finally {
-            try {
-                yield fs.promises.unlink(inputFileName);
-            }
-            catch (e) { }
-            try {
-                yield fs.promises.unlink(outputFileName);
-            }
-            catch (e) { }
-        }
+        return runCommand({ "command": "convert", "args": ["-", "-stroke", stroke.colour.toString(), "-strokewidth", stroke.width.toString(), "-fill", fill.toString(), "-draw", rectSpec, `${outputFormat}:-`], "shell": true }, input);
     });
 }
 //# sourceMappingURL=drawing.js.map

@@ -43,26 +43,17 @@ function stackImages(images, gravity, outputFormat, direction) {
     return __awaiter(this, void 0, void 0, function* () {
         const inputFiles = yield tempFilesFromBuffers(images);
         const args = inputFiles.slice();
-        const outputFileName = path.join(tmpdir(), uuid());
         const appendCommand = direction === "vertical" ? "-append" : "+append";
-        try {
-            args.splice(0, 0, "-gravity", gravity);
-            args.push(appendCommand, `${outputFormat}:${outputFileName}`);
-            yield runCommand("convert", false, ...args);
-            return fs.promises.readFile(outputFileName);
-        }
-        finally {
+        args.splice(0, 0, "-gravity", gravity);
+        args.push(appendCommand, `${outputFormat}:-`);
+        return runCommand({ "command": "convert", "args": args }).finally(() => __awaiter(this, void 0, void 0, function* () {
             for (const file of inputFiles) {
                 try {
                     yield fs.promises.unlink(file);
                 }
                 catch (err) { }
             }
-            try {
-                yield fs.promises.unlink(outputFileName);
-            }
-            catch (err) { }
-        }
+        }));
     });
 }
 //# sourceMappingURL=stack.js.map
