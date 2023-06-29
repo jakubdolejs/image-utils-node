@@ -1,20 +1,20 @@
 import { Colour } from "./colour.js";
-export declare type Size = {
+export type Size = {
     width: number;
     height: number;
 };
-export declare type OutputFormat = "png" | "jpg";
-export declare type Gravity = "NorthWest" | "North" | "NorthEast" | "West" | "Center" | "East" | "SouthWest" | "South" | "SouthEast";
-export declare type StrokeSpec = {
+export type OutputFormat = "png" | "jpg";
+export type Gravity = "NorthWest" | "North" | "NorthEast" | "West" | "Center" | "East" | "SouthWest" | "South" | "SouthEast";
+export type StrokeSpec = {
     width: number;
     colour: Colour;
 };
-export declare type Point = {
+export type Point = {
     x: number;
     y: number;
 };
-export declare type Rectangle = Point & Size;
-export declare type Command = {
+export type Rectangle = Point & Size;
+export type Command = {
     "command": string;
     "args"?: string[];
     "shell"?: boolean;

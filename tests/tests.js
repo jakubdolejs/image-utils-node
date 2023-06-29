@@ -1,10 +1,14 @@
 import { assert } from "chai"
-import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, addBorderPercent, extendSidesByMirroring, Colour } from "../index.js"
+import { imageSize, crop, resample, convert, stackVertically, stackHorizontally, drawRectangle, addBorderPercent, extendSidesByMirroring, rotate, Colour } from "../index.js"
 import fs from "fs"
 
 const divineSize = {
     "width": 257,
     "height": 388
+}
+const largeDivineSize = {
+    "width": 2570,
+    "height": 3880
 }
 
 function checkSizeMatchesDivine(size, scale, done) {
@@ -12,6 +16,14 @@ function checkSizeMatchesDivine(size, scale, done) {
     assert.isAtLeast(size.height, Math.floor(divineSize.height * scale))
     assert.isAtMost(size.width, Math.ceil(divineSize.width * scale))
     assert.isAtMost(size.height, Math.ceil(divineSize.height * scale))
+    done()
+}
+
+function checkSizeMatchesLargeDivine(size, scale, done) {
+    assert.isAtLeast(size.width, Math.floor(largeDivineSize.width * scale))
+    assert.isAtLeast(size.height, Math.floor(largeDivineSize.height * scale))
+    assert.isAtMost(size.width, Math.ceil(largeDivineSize.width * scale))
+    assert.isAtMost(size.height, Math.ceil(largeDivineSize.height * scale))
     done()
 }
 
@@ -163,6 +175,26 @@ describe("Adding borders", () => {
             .then(image => extendSidesByMirroring(image, 5, 5))
             .then(image => imageSize(image))
             .then(size => checkSizeMatchesDivine(size, 1.1, done))
+            .catch(error => done(error))
+    })
+    it("Extends large image by 5% mirroring the centre", done => {
+        fs.promises.readFile("./tests/large_divine.png")
+            .then(image => extendSidesByMirroring(image, 5, 5))
+            .then(image => imageSize(image))
+            .then(size => checkSizeMatchesLargeDivine(size, 1.1, done))
+            .catch(error => done(error))
+    }).timeout(20000)
+})
+describe("Rotating", () => {
+    it("Rotates image 90º", done => {
+        fs.promises.readFile("./tests/divine.png")
+            .then(image => rotate(image, 90))
+            .then(image => imageSize(image))
+            .then(size => {
+                assert.equal(size.width, divineSize.height)
+                assert.equal(size.height, divineSize.width)
+                done()
+            })
             .catch(error => done(error))
     })
 })
